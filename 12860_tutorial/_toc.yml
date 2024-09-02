@@ -4,7 +4,8 @@
 format: jb-book
 root: pages/intro
 chapters:
-- file: pages/welcome
+- file: pages/setup
+- file: pages/examples_preview
 - file: pages/markdown
 - file: pages/notebooks
 - file: pages/markdown-notebooks
