@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -892,8 +892,8 @@ Note we have to specify the projection keyword (e.g., ccrs.PlateCarree or ccrs.O
 <section id="explanation-of-cos-latitude-weighting">
 <span id="coslat"></span><h3>Explanation of cos(latitude) weighting<a class="headerlink" href="#explanation-of-cos-latitude-weighting" title="Link to this heading">#</a></h3>
 <p>Not every element in our array represents an equal surface area of the earth: on a “regular” longitude-latitude grid (where the longitude and latitude spacing is constant) the area of gridcells decreases as you move away from the equator to the poles. Denoting longitude and latitude as $\theta$ and $\phi$, and longitude and latitude spacing as $\delta\theta$ and $\delta\phi$, the area of each gridcell is given by $\delta A ~= R^2\cos(\phi)\delta\phi\delta\theta$, where $R$ is the radius of the earth. The weighted average of a variable $f$ on the sphere is then given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4b319421-029e-4a70-b763-6a3af211d687">
-<span class="eqno">(1)<a class="headerlink" href="#equation-4b319421-029e-4a70-b763-6a3af211d687" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-89d97f5f-6336-4ac0-b905-d07ef25039b7">
+<span class="eqno">(1)<a class="headerlink" href="#equation-89d97f5f-6336-4ac0-b905-d07ef25039b7" title="Permalink to this equation">#</a></span>\[\begin{align}
     \overline{f} &amp;= \frac{\sum f~\delta A}{\sum \delta A} = \frac{\sum f~R^2\cos\left(\phi\right)~\delta\phi~\delta\theta}{\sum R^2\cos\left(\phi\right)~\delta\phi~\delta\theta} = \frac{R^2 ~\delta\phi~\delta\theta \sum f~\cos\left(\phi\right)}{R^2~\delta\phi~\delta\theta \sum \cos(\phi)} = \frac{\sum f\cos(\phi)}{\sum\cos(\phi)},
 \end{align}\]</div>
 <p>where we use the fact that $R^2$, $\delta\theta$, and $\delta\phi$ are constant (and can be pulled out of the summation). Therefore, to compute $\overline{f}$, we need to compute a <em>weighted</em> average, where the weights are the cosine of the latitude.</p>
