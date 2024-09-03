@@ -9,6 +9,9 @@ chapters:
   - file: pages/setup_venv
   - file: pages/connect_to_server
   - file: pages/test
+- file: pages/resources
+  sections:
+  - file: pages/FAQ.md
 - file: pages/assignments
   sections:
   - file: pages/assignment1
