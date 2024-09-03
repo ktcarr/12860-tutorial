@@ -11,7 +11,8 @@ chapters:
   - file: pages/test
 - file: pages/resources
   sections:
-  - file: pages/FAQ.md
+  - file: pages/FAQ
+  - file: pages/xarray_reference
 - file: pages/assignments
   sections:
   - file: pages/assignment1
