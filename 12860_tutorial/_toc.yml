@@ -5,7 +5,10 @@ format: jb-book
 root: pages/intro
 chapters:
 - file: pages/setup
-- file: pages/examples_preview
-- file: pages/markdown
-- file: pages/notebooks
-- file: pages/markdown-notebooks
+  sections:
+  - file: pages/setup_venv
+  - file: pages/connect_to_server
+  - file: pages/test
+- file: pages/assignments
+  sections:
+  - file: pages/assignment1
