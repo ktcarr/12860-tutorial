@@ -13,6 +13,9 @@ chapters:
   sections:
   - file: pages/FAQ
   - file: pages/xarray_reference
+- file: pages/tutorial_9-19/overview
+  sections:
+  - file: pages/tutorial_9-19/example.md
 - file: pages/assignments
   sections:
   - file: pages/assignment1
