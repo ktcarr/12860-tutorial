@@ -1,4 +1,5 @@
 # Assignment 1: model validation
+**Due date**: Oct 7, 2024
 
 Imagine you've been tasked with making a regional climate change projection based on output from a global climate model (for example, perhaps the Boston city council is interested in the risk of flooding 30 years in the future). Before looking at the model's projected changes, you need to evaluate how well the model simulates the region's current climate. This is what you'll do in this assignment (we'll get to the projected changes later on in the course).
 
@@ -6,7 +7,7 @@ In particular, you're going to valid the CESM2 climate model's ability to repres
 
 The assignment is broken down into 4 parts, detailed below (some [hints](hints) are included as well). For each part, we've highlighted what to include in your submission in a "To-do" box (you can turn in a jupyter notebook or .pdf/.doc file with solutions). A [marking guide](marking_guide) is provided at the end of the assignment, showing the number of points for each part (note 3/10 of total points come from labeling plots!).
 
-Feel free to copy and paste code from the [in-class example](tutorial_9-19/example.ipynb) and please reach out if you run into coding issues (the intent of this assignment is not to assess your programming ability!).
+Feel free to copy and paste code from the [in-class example](../tutorial_9-19/example.ipynb) and please reach out if you run into coding issues (the intent of this assignment is not to assess your programming ability!).
 
 ## 1) Choose a region and a climate "index"
 Start by defining a regional "climate index". The index should be a scalar metric which can be evaluated at every timestep. For example, in class we defined the Woods Hole sea surface temperature (SST) metric as the SST averaged along the coastline close to Woods Hole. For the assignment, choose a different location and/or a different variable (e.g., sea level pressure in the North Pacific). Filepaths to several variables are provided [below](filepaths). You may also want to change how the index is computed (e.g., averaging over a larger/smaller area, or defining an index as the difference between two area averages).
@@ -64,11 +65,11 @@ In your submission, write 3-4 sentences summarizing your takeaways.
 (marking_guide)=
 ## Marking guide
 Part | # Points | Breakdown
---: | --: | :--:
-1 | 2 | 1 pt for content + 1 pt for plot labels
-2 | 2 | 1 pt for content + 1 pt for plot labels
-3 | 3 | 2 pts for content + 1 pt for plot labels
-4 | 3 |
+:-- | --: | --:
+(1) Index definition | 2 | 1 pt for plot & index description + 1 pt for plot labels
+(2) Reanalysis diagnostics | 2 | 1 pt for plots + 1 pt for plot labels
+(3) Model vs. reanalysis diagnostics | 3 | 2 pts for plots + 1 pt for plot labels
+(4) Interpretation | 3 | 3 pts for written response
 **Total** | 10 |
 
 (filepaths)=
@@ -123,13 +124,14 @@ data = data.reindex({"latitude" : data["latitude"].values[::-1]})
 
 (regrid_hint)=
 ### Regridding data
-The spatial coordinates for renanalysis and model datasets may have different names (e.g., "lon" vs. "longitude") and orderings/conventions (e.g., latitude in ascending vs. descending order, or longitudes ranging from $0^{\circ}\to 360^{\circ}$ vs. $-180^{\circ} \to 180^{\circ}$). These differences may cause errors if you try to apply the same computation/plotting functions from Part 2 to the model output. 
-
-One way around this is to rename/reorder the model output coordinates to match those of the reanalysis before trying to compute statistics. The following ```xarray``` functions may be useful for this:
+It's likely that the spatial coordinates for the reanalysis and model will differ (e.g., one may have a datapoint every $0.25^{\circ}$ while the other has a datapoint every $1^{\circ}$). If you'd like to do a gridpoint-by-gridpoint comparison (e.g., for a spatial plot) you may need to interpolate or "regrid" one of the datasets to match the other. Some possible tools for this include:
 ```python
-## rename data's coords from "lat"/"lon" to "latitude"/"longitude"
-data = data.rename({"lat":"latitude", "lon":"longitude"})
+## 1) interpolate reanalysis data onto model's grid using xarray
+reanalysis_data = reanalysis_data.interp_like(model_data)
 
-## reverse direction of "latitude" coordinate
-data = data.reindex({"latitude" : data["latitude"].values[::-1]})
+## 2) same, but using xesmf package
+## (useful if one of the grids is not "regular")
+import xesmf as xe
+regridder = xe.Regridder(ds_in = reanalysis_data, ds_out=model_data)
+reanalysis_data = regridder(reanalysis_data)
 ```

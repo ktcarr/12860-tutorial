@@ -17,6 +17,6 @@ chapters:
   sections:
   - file: pages/tutorial_9-19/background.md
   - file: pages/tutorial_9-19/example.md
-- file: pages/assignments
+- file: pages/assignments/assignments_toc
   sections:
-  - file: pages/assignment1
+  - file: pages/assignments/assignment1
