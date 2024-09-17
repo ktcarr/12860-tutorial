@@ -1,5 +1,5 @@
 # Assignment 1: model validation
-**Due date**: Oct 7, 2024
+**Due date**: Sep 30, 2024
 
 Imagine you've been tasked with making a regional climate change projection based on output from a global climate model (for example, perhaps the Boston city council is interested in the risk of flooding 30 years in the future). Before looking at the model's projected changes, you need to evaluate how well the model simulates the region's current climate. This is what you'll do in this assignment (we'll get to the projected changes later on in the course).
 
