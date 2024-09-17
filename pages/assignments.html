@@ -57,11 +57,13 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pages/assignments';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Assignment 1" href="assignment1.html" />
-    <link rel="prev" title="Xarray reference" href="xarray_reference.html" />
+    <link rel="next" title="Assignment 1: model validation" href="assignment1.html" />
+    <link rel="prev" title="Example: Woods Hole temperature variability" href="tutorial_9-19/example.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -191,8 +193,13 @@
 <li class="toctree-l2"><a class="reference internal" href="xarray_reference.html">Xarray reference</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorial_9-19/overview.html">9/19 tutorial</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_9-19/background.html">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_9-19/example.html">Example: Woods Hole temperature variability</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Assignments</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="assignment1.html">Assignment 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="assignment1.html">Assignment 1: model validation</a></li>
 </ul>
 </details></li>
 </ul>
@@ -249,7 +256,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/ktcarr/12860-tutorial" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -266,7 +273,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpages/assignments.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ktcarr/12860-tutorial/issues/new?title=Issue%20on%20page%20%2Fpages/assignments.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -392,9 +399,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="assignments">
+  <section class="tex2jax_ignore mathjax_ignore" id="assignments">
 <h1>Assignments<a class="headerlink" href="#assignments" title="Link to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="assignment1.html">Assignment 1: model validation</a></li>
+</ul>
 </div>
 </section>
 
@@ -429,12 +439,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="xarray_reference.html"
+       href="tutorial_9-19/example.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Xarray reference</p>
+        <p class="prev-next-title">Example: Woods Hole temperature variability</p>
       </div>
     </a>
     <a class="right-next"
@@ -442,7 +452,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Assignment 1</p>
+        <p class="prev-next-title">Assignment 1: model validation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -57,11 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pages/xarray_reference';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Assignments" href="assignments.html" />
+    <link rel="next" title="9/19 tutorial" href="tutorial_9-19/overview.html" />
     <link rel="prev" title="FAQ" href="FAQ.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -192,8 +193,13 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Xarray reference</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="assignments.html">Assignments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="assignment1.html">Assignment 1</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tutorial_9-19/overview.html">9/19 tutorial</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_9-19/background.html">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_9-19/example.html">Example: Woods Hole temperature variability</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="assignments/assignments_toc.html">Assignments</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="assignments/assignment1.html">Assignment 1: model validation</a></li>
 </ul>
 </details></li>
 </ul>
@@ -250,7 +256,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/ktcarr/12860-tutorial" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -267,7 +273,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpages/xarray_reference.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ktcarr/12860-tutorial/issues/new?title=Issue%20on%20page%20%2Fpages/xarray_reference.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -406,7 +412,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#highlighting-specific-contours">Highlighting specific contours</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-data-and-highlight-the-280-k-contour">Plot the data (and highlight the $280 K$ contour)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-data-and-highlight-the-280-k-contour">Plot the data (and highlight the <span class="math notranslate nohighlight">\(280 K\)</span> contour)</a></li>
 </ul>
 </li>
 </ul>
@@ -423,7 +429,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detrending">Detrending</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">Correlation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-point-wise-correlation-between-slp-and-t-2m">Compute point-wise correlation between SLP and $T_{2m}$</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-point-wise-correlation-between-slp-and-t-2m">Compute point-wise correlation between SLP and <span class="math notranslate nohighlight">\(T_{2m}\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-between-a-single-point-the-rest-of-the-grid">Correlation between a single point the rest of the grid</a></li>
 </ul>
 </li>
@@ -439,12 +445,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="xarray-reference">
+  <section class="tex2jax_ignore mathjax_ignore" id="xarray-reference">
 <h1>Xarray reference<a class="headerlink" href="#xarray-reference" title="Link to this heading">#</a></h1>
 <section id="loading-and-prepping-data-from-whoi-s-cmip-server">
 <h2>Loading and prepping data from WHOI’s “CMIP” server<a class="headerlink" href="#loading-and-prepping-data-from-whoi-s-cmip-server" title="Link to this heading">#</a></h2>
 <p>The goal of this script is to demonstrate – and provide a reference for – how to load and pre-process gridded climate data from WHOI’s servers. We’ll start by <a class="reference internal" href="#opening-data"><span class="std std-ref">opening</span></a> and <a class="reference internal" href="#plotting-data"><span class="std std-ref">plotting</span></a> some temperature data and perform some common pre-processing steps, including <a class="reference internal" href="#spatial-averaging"><span class="std std-ref">spatial averaging</span></a>, <a class="reference internal" href="#seasonal-cycle"><span class="std std-ref">removing the seasonal cycle</span></a>, <a class="reference internal" href="#interp"><span class="std std-ref">interpolation and resampling</span></a>, <a class="reference internal" href="#detrending"><span class="std std-ref">detrending</span></a>, <a class="reference internal" href="#correlation"><span class="std std-ref">computing correlations</span></a>, and <a class="reference internal" href="#regridding"><span class="std std-ref">regridding</span></a>. These examples are not necessarily the “best” (e.g., most efficient) way to do things and are intended as a starting point (the 2-dimenstional dataset we’re working with is small enough that it doesn’t matter too much if we do things inefficiently).</p>
-<p>Whenever possible, we’ve attempted to use built-in functions from <a class="reference external" href="https://xarray.dev/">xarray</a>, a Python package useful for working with gridded climate data and netcdf files. I think of it as a high-level “wrapper” for lower-level packages like <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. While the core of a <code class="docutils literal notranslate"><span class="pre">xarray.DataArray</span></code> object is a <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code>, the <code class="docutils literal notranslate"><span class="pre">xarray</span></code> object includes dimension names and additional metadata. This tends to make code easier to interpret: for example, to average over latitudes in a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array, you have to keep track of which array dimension corresponds to latitude – e.g., <code class="docutils literal notranslate"><span class="pre">data.mean(axis=2)</span></code>, if latitude is the 2$^{nd}$ dimension – whereas in <code class="docutils literal notranslate"><span class="pre">xarray</span></code> you don’t: <code class="docutils literal notranslate"><span class="pre">data.mean(dim=&quot;latitude&quot;)</span></code>.</p>
+<p>Whenever possible, we’ve attempted to use built-in functions from <a class="reference external" href="https://xarray.dev/">xarray</a>, a Python package useful for working with gridded climate data and netcdf files. I think of it as a high-level “wrapper” for lower-level packages like <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. While the core of a <code class="docutils literal notranslate"><span class="pre">xarray.DataArray</span></code> object is a <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code>, the <code class="docutils literal notranslate"><span class="pre">xarray</span></code> object includes dimension names and additional metadata. This tends to make code easier to interpret: for example, to average over latitudes in a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array, you have to keep track of which array dimension corresponds to latitude – e.g., <code class="docutils literal notranslate"><span class="pre">data.mean(axis=2)</span></code>, if latitude is the 2<span class="math notranslate nohighlight">\(^{nd}\)</span> dimension – whereas in <code class="docutils literal notranslate"><span class="pre">xarray</span></code> you don’t: <code class="docutils literal notranslate"><span class="pre">data.mean(dim=&quot;latitude&quot;)</span></code>.</p>
 <p>For a more complete tutorial on the <code class="docutils literal notranslate"><span class="pre">xarray</span></code> package, I highly recommend the developers’ official <a class="reference external" href="https://tutorial.xarray.dev/overview/xarray-in-45-min.html">45-minute tutorial</a>.</p>
 </section>
 <section id="imports">
@@ -783,7 +789,7 @@ Note we have to specify the projection keyword (e.g., ccrs.PlateCarree or ccrs.O
 <section id="highlighting-specific-contours">
 <h3>Highlighting specific contours<a class="headerlink" href="#highlighting-specific-contours" title="Link to this heading">#</a></h3>
 <section id="plot-the-data-and-highlight-the-280-k-contour">
-<h4>Plot the data (and highlight the $280 K$ contour)<a class="headerlink" href="#plot-the-data-and-highlight-the-280-k-contour" title="Link to this heading">#</a></h4>
+<h4>Plot the data (and highlight the <span class="math notranslate nohighlight">\(280 K\)</span> contour)<a class="headerlink" href="#plot-the-data-and-highlight-the-280-k-contour" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## make blank figure</span>
@@ -891,12 +897,12 @@ Note we have to specify the projection keyword (e.g., ccrs.PlateCarree or ccrs.O
 </div>
 <section id="explanation-of-cos-latitude-weighting">
 <span id="coslat"></span><h3>Explanation of cos(latitude) weighting<a class="headerlink" href="#explanation-of-cos-latitude-weighting" title="Link to this heading">#</a></h3>
-<p>Not every element in our array represents an equal surface area of the earth: on a “regular” longitude-latitude grid (where the longitude and latitude spacing is constant) the area of gridcells decreases as you move away from the equator to the poles. Denoting longitude and latitude as $\theta$ and $\phi$, and longitude and latitude spacing as $\delta\theta$ and $\delta\phi$, the area of each gridcell is given by $\delta A ~= R^2\cos(\phi)\delta\phi\delta\theta$, where $R$ is the radius of the earth. The weighted average of a variable $f$ on the sphere is then given by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-89d97f5f-6336-4ac0-b905-d07ef25039b7">
-<span class="eqno">(1)<a class="headerlink" href="#equation-89d97f5f-6336-4ac0-b905-d07ef25039b7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<p>Not every element in our array represents an equal surface area of the earth: on a “regular” longitude-latitude grid (where the longitude and latitude spacing is constant) the area of gridcells decreases as you move away from the equator to the poles. Denoting longitude and latitude as <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span>, and longitude and latitude spacing as <span class="math notranslate nohighlight">\(\delta\theta\)</span> and <span class="math notranslate nohighlight">\(\delta\phi\)</span>, the area of each gridcell is given by <span class="math notranslate nohighlight">\(\delta A ~= R^2\cos(\phi)\delta\phi\delta\theta\)</span>, where <span class="math notranslate nohighlight">\(R\)</span> is the radius of the earth. The weighted average of a variable <span class="math notranslate nohighlight">\(f\)</span> on the sphere is then given by:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-346ef63a-bb73-4a18-9e13-cb52cc6fa2b8">
+<span class="eqno">(1)<a class="headerlink" href="#equation-346ef63a-bb73-4a18-9e13-cb52cc6fa2b8" title="Permalink to this equation">#</a></span>\[\begin{align}
     \overline{f} &amp;= \frac{\sum f~\delta A}{\sum \delta A} = \frac{\sum f~R^2\cos\left(\phi\right)~\delta\phi~\delta\theta}{\sum R^2\cos\left(\phi\right)~\delta\phi~\delta\theta} = \frac{R^2 ~\delta\phi~\delta\theta \sum f~\cos\left(\phi\right)}{R^2~\delta\phi~\delta\theta \sum \cos(\phi)} = \frac{\sum f\cos(\phi)}{\sum\cos(\phi)},
 \end{align}\]</div>
-<p>where we use the fact that $R^2$, $\delta\theta$, and $\delta\phi$ are constant (and can be pulled out of the summation). Therefore, to compute $\overline{f}$, we need to compute a <em>weighted</em> average, where the weights are the cosine of the latitude.</p>
+<p>where we use the fact that <span class="math notranslate nohighlight">\(R^2\)</span>, <span class="math notranslate nohighlight">\(\delta\theta\)</span>, and <span class="math notranslate nohighlight">\(\delta\phi\)</span> are constant (and can be pulled out of the summation). Therefore, to compute <span class="math notranslate nohighlight">\(\overline{f}\)</span>, we need to compute a <em>weighted</em> average, where the weights are the cosine of the latitude.</p>
 </section>
 </section>
 <section id="seasonal-cycle">
@@ -1212,7 +1218,7 @@ After downsampling: (36, 68, 100)
 </div>
 </div>
 <section id="compute-point-wise-correlation-between-slp-and-t-2m">
-<h3>Compute point-wise correlation between SLP and $T_{2m}$<a class="headerlink" href="#compute-point-wise-correlation-between-slp-and-t-2m" title="Link to this heading">#</a></h3>
+<h3>Compute point-wise correlation between SLP and <span class="math notranslate nohighlight">\(T_{2m}\)</span><a class="headerlink" href="#compute-point-wise-correlation-between-slp-and-t-2m" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_cb_range</span><span class="p">(</span><span class="n">amp</span><span class="p">,</span> <span class="n">delta</span><span class="p">):</span>
@@ -1437,11 +1443,11 @@ After downsampling: (36, 68, 100)
       </div>
     </a>
     <a class="right-next"
-       href="assignments.html"
+       href="tutorial_9-19/overview.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Assignments</p>
+        <p class="prev-next-title">9/19 tutorial</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1476,7 +1482,7 @@ After downsampling: (36, 68, 100)
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#highlighting-specific-contours">Highlighting specific contours</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-data-and-highlight-the-280-k-contour">Plot the data (and highlight the $280 K$ contour)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-data-and-highlight-the-280-k-contour">Plot the data (and highlight the <span class="math notranslate nohighlight">\(280 K\)</span> contour)</a></li>
 </ul>
 </li>
 </ul>
@@ -1493,7 +1499,7 @@ After downsampling: (36, 68, 100)
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detrending">Detrending</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation">Correlation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-point-wise-correlation-between-slp-and-t-2m">Compute point-wise correlation between SLP and $T_{2m}$</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-point-wise-correlation-between-slp-and-t-2m">Compute point-wise correlation between SLP and <span class="math notranslate nohighlight">\(T_{2m}\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-between-a-single-point-the-rest-of-the-grid">Correlation between a single point the rest of the grid</a></li>
 </ul>
 </li>

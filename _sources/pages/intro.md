@@ -11,7 +11,7 @@ Date | Topic | Link
 ## Outline for data analysis assignments
 Due date (tentative) | Topic | Link 
 -- | -- | --
-9/30/24 | #1 Load and plot data from the CMIP server | [Assignment 1](assignment1.md)
+9/30/24 | #1 Load and plot data from the CMIP server | [Assignment 1](assignments/assignment1.md)
 10/31/24 | #3 Climate mode analysis | TBD 
 
 ## Table of contents
