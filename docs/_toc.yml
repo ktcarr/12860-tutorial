@@ -15,7 +15,8 @@ chapters:
   - file: pages/xarray_reference
 - file: pages/tutorial_9-19/overview
   sections:
-  - file: pages/tutorial_9-19/background.md
+  - url: https://docs.google.com/presentation/d/1DZRXfNPGTo16g4iyo0TyZzevw06dgi5qklZvJoqnEQw/edit?usp=sharing
+    title: Slides
   - file: pages/tutorial_9-19/example.md
   - file: pages/tutorial_9-19/hw1_starter.md
 - file: pages/assignments/assignments_toc

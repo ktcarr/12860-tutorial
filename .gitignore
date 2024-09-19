@@ -3,3 +3,4 @@ envs
 .DS_Store
 .ipynb_checkpoints
 _build
+docs/pages/tutorial_9-19/figs

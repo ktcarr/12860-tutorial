@@ -1,3 +1,5 @@
+# Scratch
+
 ## What is climate variability?
 - Climate *variability*: "slow" changes in some property of ocean/atmosphere, which may appear to "oscillate"
 - What is slow? Good question! One definition: longer than "weather" timescales (~2 weeks)
