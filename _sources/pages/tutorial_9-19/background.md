@@ -1,4 +1,5 @@
 # Background
+**Updates coming soon – check back after class on 9/20**
 
 ## What is climate variability?
 - First, what is climate? One definition: long-term statistics of the ocean/atmosphere/ice/land/etc
