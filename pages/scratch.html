@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Python / virtual environment &#8212; 12.860 Tutorial</title>
+    <title>Scratch &#8212; 12.860 Tutorial</title>
   
   
   
@@ -57,11 +57,9 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'pages/setup_venv';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pages/scratch';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Accessing the CMIP6 data server" href="connect_to_server.html" />
-    <link rel="prev" title="Setup" href="setup.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,6 +122,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -179,11 +179,11 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="setup.html">Setup</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Python / virtual environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="connect_to_server.html">Accessing the CMIP6 data server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="test.html">Test the setup worked!</a></li>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="setup/setup.html">Setup</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup/setup_venv.html">Python / virtual environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup/connect_to_server.html">Accessing the CMIP6 data server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup/test.html">Test the setup worked!</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="tutorial_9-19/overview.html">9/19 tutorial</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -272,7 +272,7 @@
       
       
       
-      <li><a href="https://github.com/ktcarr/12860-tutorial/issues/new?title=Issue%20on%20page%20%2Fpages/setup_venv.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ktcarr/12860-tutorial/issues/new?title=Issue%20on%20page%20%2Fpages/scratch.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -302,7 +302,7 @@
       
       
       
-      <li><a href="../_sources/pages/setup_venv.md" target="_blank"
+      <li><a href="../_sources/pages/scratch.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -386,7 +386,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Python / virtual environment</h1>
+    <h1>Scratch</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -396,8 +396,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-set-up-virtual-environment">(optional) Set up virtual environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-python-packages">Install python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-climate-variability">What is climate variability?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-models-and-reanalysis">Observations, models, and reanalysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observations">Observations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reanalysis">Reanalysis</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -409,52 +414,48 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="python-virtual-environment">
-<h1>Python / virtual environment<a class="headerlink" href="#python-virtual-environment" title="Link to this heading">#</a></h1>
-<p>First, we’ll create a “virtual environment” for the class, which contains python and associated software packages (if you’re comfortable with python/virtual environments, feel free to skip ahead to <a class="reference internal" href="#dependencies"><span class="std std-ref">software dependencies</span></a>.</p>
-<section id="optional-set-up-virtual-environment">
-<h2>(optional) Set up virtual environment<a class="headerlink" href="#optional-set-up-virtual-environment" title="Link to this heading">#</a></h2>
-<p>If you don’t have a preferred package manager, I recommend using <code class="docutils literal notranslate"><span class="pre">mamba</span></code> (a faster version of the <code class="docutils literal notranslate"><span class="pre">conda</span></code> package manager). To use mamba:</p>
-<ol class="arabic simple">
-<li><p>Check if conda is installed by typing <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">info</span></code> at the command line. If not, download and install miniforge following the instructions here: <a class="github reference external" href="https://github.com/conda-forge/miniforge">conda-forge/miniforge</a>.</p></li>
-<li><p>Create a virtual environment for the project with: <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">12860_env</span></code> and activate the environment with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">12860_env</span></code></p></li>
-</ol>
+  <section class="tex2jax_ignore mathjax_ignore" id="scratch">
+<h1>Scratch<a class="headerlink" href="#scratch" title="Link to this heading">#</a></h1>
+<section id="what-is-climate-variability">
+<h2>What is climate variability?<a class="headerlink" href="#what-is-climate-variability" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Climate <em>variability</em>: “slow” changes in some property of ocean/atmosphere, which may appear to “oscillate”</p></li>
+<li><p>What is slow? Good question! One definition: longer than “weather” timescales (~2 weeks)</p></li>
+<li><p>Often think climate variability as a set of distinct “modes” (e.g., El Niño / La Niña, Madden-Julian Oscillation)</p></li>
+<li><p>These modes have different feedbacks/mechanisms which lead to different spatial patterns and timescales</p></li>
+<li><p>Almost like “emergent” properties - e.g., depend on continental configuration</p></li>
+</ul>
 </section>
-<section id="install-python-packages">
-<span id="dependencies"></span><h2>Install python packages<a class="headerlink" href="#install-python-packages" title="Link to this heading">#</a></h2>
-<p>Next, we’ll install python packages needed for the tutorials and class assignments:</p>
-<p><strong>Required packages</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">-</span> <span class="n">xarray</span>  
-  <span class="o">-</span> <span class="n">jupyterlab</span>
-  <span class="o">-</span> <span class="n">dask</span>
-  <span class="o">-</span> <span class="n">netcdf4</span>
-  <span class="o">-</span> <span class="n">cftime</span>
-  <span class="o">-</span> <span class="n">cartopy</span>
-  <span class="o">-</span> <span class="n">matplotlib</span>
-</pre></div>
-</div>
-<p><strong>Optional packages</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">-</span> <span class="n">cmocean</span>
-  <span class="o">-</span> <span class="n">seaborn</span>
-  <span class="o">-</span> <span class="n">xesmf</span>
-  <span class="o">-</span> <span class="n">scipy</span>
-  <span class="o">-</span> <span class="n">bottleneck</span>
-  <span class="o">-</span> <span class="n">h5netcdf</span>
-</pre></div>
-</div>
-<p>If using <code class="docutils literal notranslate"><span class="pre">mamba</span></code>, the command line syntax to install the packages is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## install required dependencies</span>
-<span class="n">mamba</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">xarray</span> <span class="n">jupyterlab</span> <span class="n">dask</span> <span class="n">netcdf4</span> <span class="n">cftime</span> <span class="n">cartopy</span> <span class="n">matplotlib</span>
-
-<span class="c1">## install optional dependencies</span>
-<span class="n">mamba</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">cmocean</span> <span class="n">seaborn</span> <span class="n">xesmf</span> <span class="n">scipy</span> <span class="n">bottleneck</span> <span class="n">h5netcdf</span>
-</pre></div>
-</div>
-<p>(This should also work if you replace <code class="docutils literal notranslate"><span class="pre">mamba</span></code> with <code class="docutils literal notranslate"><span class="pre">conda</span></code>, but will take longer). Note the “<code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">conda-forge</span></code>” flag tells the package manager to download the packages located from the conda-forge channel.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you’re using conda and the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">...</span></code> / <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">update</span> <span class="pre">...</span></code> commands are taking a long time, you could try <a class="reference external" href="https://www.anaconda.com/blog/a-faster-conda-for-a-growing-community">updating the solver to “libmamba”</a>. If this doesn’t work, you could also try setting the channel priority to flexible, with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">config</span> <span class="pre">--set</span> <span class="pre">channel_priority</span> <span class="pre">flexible</span></code> (thanks to Lilli Enders for suggesting this).</p>
-</div>
+<section id="observations-models-and-reanalysis">
+<h2>Observations, models, and reanalysis<a class="headerlink" href="#observations-models-and-reanalysis" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>What’s the difference? What do we use these tools for?</p></li>
+</ul>
+<section id="observations">
+<h3>Observations<a class="headerlink" href="#observations" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Gold standard: everything is based on these! E.g., use them to guide model development.</p></li>
+<li><p>Challenge: they’re sparse!</p></li>
+</ul>
+</section>
+<section id="models">
+<h3>Models<a class="headerlink" href="#models" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>(Mostly) physically-consistent evolution of climate system (solving differential equations).</p></li>
+<li><p>Easier to compute robust statistics (just run the model a bunch of times!) and study “modes” with long timescales</p></li>
+<li><p>Makes it possible to estimate future changes to climate (e.g., effect of greenhouse gas emissions)</p></li>
+<li><p>Challenge: for computational reasons, have to make approximations; these approximations lead to biases/errors.</p></li>
+</ul>
+</section>
+<section id="reanalysis">
+<h3>Reanalysis<a class="headerlink" href="#reanalysis" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Uses a model to “fill the gaps” in observations</p></li>
+<li><p>Idea: atmosphere is chaotic, and simulations with slightly different initial conditions will diverge quickly (weather timescales).</p></li>
+<li><p>Therefore, we use the observations to “pull” the model back every few hours, so that it doesn’t diverge.</p></li>
+<li><p>Have to make compromises: won’t exactly match observations and won’t conserve properties that should be conserved (unlike models)</p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -488,24 +489,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="setup.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Setup</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="connect_to_server.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Accessing the CMIP6 data server</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -522,8 +505,13 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-set-up-virtual-environment">(optional) Set up virtual environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-python-packages">Install python packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-climate-variability">What is climate variability?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observations-models-and-reanalysis">Observations, models, and reanalysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observations">Observations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#models">Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reanalysis">Reanalysis</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

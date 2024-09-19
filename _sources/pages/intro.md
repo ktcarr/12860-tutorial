@@ -5,7 +5,7 @@ This page contains material for the data analysis component of the MIT/WHOI cour
 ## Outline for data analysis tutorials
 Date | Topic | Link 
 -- | -- | --
-9/5/24 | Python setup and connecting to the [CMIP6](http://cmip6.whoi.edu) data server | [setup](setup.md)
+9/5/24 | Python setup and connecting to the [CMIP6](http://cmip6.whoi.edu) data server | [setup](setup/setup.md)
 9/19/24 | Load and plot data from the CMIP server | TBD
 
 ## Outline for data analysis assignments
