@@ -4,15 +4,11 @@
 format: jb-book
 root: pages/intro
 chapters:
-- file: pages/setup
+- file: pages/setup/setup
   sections:
-  - file: pages/setup_venv
-  - file: pages/connect_to_server
-  - file: pages/test
-- file: pages/resources
-  sections:
-  - file: pages/FAQ
-  - file: pages/xarray_reference
+  - file: pages/setup/setup_venv
+  - file: pages/setup/connect_to_server
+  - file: pages/setup/test
 - file: pages/tutorial_9-19/overview
   sections:
   - url: https://docs.google.com/presentation/d/1DZRXfNPGTo16g4iyo0TyZzevw06dgi5qklZvJoqnEQw/edit?usp=sharing
@@ -22,3 +18,8 @@ chapters:
 - file: pages/assignments/assignments_toc
   sections:
   - file: pages/assignments/assignment1
+- file: pages/resources/resources
+  sections:
+  - file: pages/resources/FAQ
+  - file: pages/resources/xarray_reference
+

@@ -12,7 +12,7 @@ Open Finder, then select "Go" from the top menu bar and click "Connect to Server
 ## Connecting from a Windows PC
 In the file explorer, navigate to “This PC” and select **Computer > Map network drive**.
 
-```{figure} ../figs/nfs-win-01.png
+```{figure} figs/nfs-win-01.png
 ---
 width: 500px
 name: nsfwin1
@@ -21,7 +21,7 @@ name: nsfwin1
 
 In the dialog enter ```\\vast.whoi.edu\proj\cmip6``` for **Folder**, and check the box for **Connect using different credentials**.
 
-```{figure} ../figs/nfs-win-02.png
+```{figure} figs/nfs-win-02.png
 ---
 width: 500px
 name: nsfwin2
@@ -30,7 +30,7 @@ name: nsfwin2
 
 Enter your **WHOI username** (with domain, e.g. “@whoi.edu”) and **password**. Check the box for **Remember my credentials**.
 
-```{figure} ../figs/nfs-win-03.png
+```{figure} figs/nfs-win-03.png
 ---
 width: 500px
 name: nsfwin3
