@@ -17,6 +17,7 @@ chapters:
   sections:
   - file: pages/tutorial_9-19/background.md
   - file: pages/tutorial_9-19/example.md
+  - file: pages/tutorial_9-19/hw1_starter.md
 - file: pages/assignments/assignments_toc
   sections:
   - file: pages/assignments/assignment1
