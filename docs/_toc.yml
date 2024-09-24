@@ -22,4 +22,5 @@ chapters:
   sections:
   - file: pages/resources/FAQ
   - file: pages/resources/xarray_reference
+  - file: pages/resources/git_basics
 
