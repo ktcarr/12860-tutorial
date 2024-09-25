@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Accessing the CMIP6 data server &#8212; 12.860 Tutorial</title>
+    <title>Accessing the CMIP data servers &#8212; 12.860 Tutorial</title>
   
   
   
@@ -182,7 +182,7 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="setup.html">Setup</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="setup_venv.html">Python / virtual environment</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Accessing the CMIP6 data server</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Accessing the CMIP data servers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="test.html">Test the setup worked!</a></li>
 </ul>
 </details></li>
@@ -387,7 +387,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Accessing the CMIP6 data server</h1>
+    <h1>Accessing the CMIP data servers</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -397,9 +397,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-a-mac-pc">Connecting from a Mac PC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-a-windows-pc">Connecting from a Windows PC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-a-non-mac-linux-pc">Connecting from a (non-Mac) LINUX PC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6">CMIP6</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-a-mac-pc">Connecting from a Mac PC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-a-windows-pc">Connecting from a Windows PC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-a-non-mac-linux-pc">Connecting from a (non-Mac) LINUX PC</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip5">CMIP5</a></li>
 </ul>
             </nav>
         </div>
@@ -411,19 +415,21 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="accessing-the-cmip6-data-server">
-<h1>Accessing the CMIP6 data server<a class="headerlink" href="#accessing-the-cmip6-data-server" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="accessing-the-cmip-data-servers">
+<h1>Accessing the CMIP data servers<a class="headerlink" href="#accessing-the-cmip-data-servers" title="Link to this heading">#</a></h1>
+<section id="cmip6">
+<h2>CMIP6<a class="headerlink" href="#cmip6" title="Link to this heading">#</a></h2>
 <p>In the tutorials, we’ll use data from the 6th version of the Coupled Model Intercomparison Project, or “CMIP6”. While this data is publicly available for download, WHOI has downloaded lots of it to a shared data server (technically, a “network file share” or NFS). Now, we’ll connect to this WHOI server so we don’t have to download the data. Once we’re connected, we’ll be able to manipulate the data on the server as if it was downloaded locally. The following instructions are reproduced from <a class="reference external" href="http://cmip6.whoi.edu/?page_id=50">WHOI’s CMIP6 data access page</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To connect to the server, you must be on the WHOI network (i.e., on the WHOI wifi or connected by VPN).</p>
 </div>
 <section id="connecting-from-a-mac-pc">
-<h2>Connecting from a Mac PC<a class="headerlink" href="#connecting-from-a-mac-pc" title="Link to this heading">#</a></h2>
+<h3>Connecting from a Mac PC<a class="headerlink" href="#connecting-from-a-mac-pc" title="Link to this heading">#</a></h3>
 <p>Open Finder, then select “Go” from the top menu bar and click “Connect to Server”. Then, enter <code class="docutils literal notranslate"><span class="pre">smb://vast.whoi.edu/proj/cmip6</span></code>. If prompted, enter your WHOI username (<em>without</em> “&#64;whoi.edu”) and password. Note the default mount location for the server is <code class="docutils literal notranslate"><span class="pre">/Volumes/data</span></code>.</p>
 </section>
 <section id="connecting-from-a-windows-pc">
-<h2>Connecting from a Windows PC<a class="headerlink" href="#connecting-from-a-windows-pc" title="Link to this heading">#</a></h2>
+<h3>Connecting from a Windows PC<a class="headerlink" href="#connecting-from-a-windows-pc" title="Link to this heading">#</a></h3>
 <p>In the file explorer, navigate to “This PC” and select <strong>Computer &gt; Map network drive</strong>.</p>
 <figure class="align-default" id="nsfwin1">
 <a class="reference internal image-reference" href="../../_images/nfs-win-01.png"><img alt="../../_images/nfs-win-01.png" src="../../_images/nfs-win-01.png" style="width: 500px;" /></a>
@@ -438,7 +444,7 @@ document.write(`
 </figure>
 </section>
 <section id="connecting-from-a-non-mac-linux-pc">
-<h2>Connecting from a (non-Mac) LINUX PC<a class="headerlink" href="#connecting-from-a-non-mac-linux-pc" title="Link to this heading">#</a></h2>
+<h3>Connecting from a (non-Mac) LINUX PC<a class="headerlink" href="#connecting-from-a-non-mac-linux-pc" title="Link to this heading">#</a></h3>
 <p>The following packages are required for mounting the NFS on Linux devices.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">cifs-utils</span></code>: Common Internet File System utilities</p></li>
@@ -454,10 +460,11 @@ To install these packages on Debian Linux and related variants, for example, use
 <span class="n">sudo</span> <span class="n">mount</span> <span class="o">-</span><span class="n">t</span> <span class="n">cifs</span> <span class="o">-</span><span class="n">ouser</span><span class="o">=</span><span class="n">USERNAME</span><span class="p">,</span><span class="n">password</span><span class="o">=</span><span class="n">PASSWORD</span> <span class="o">//</span><span class="n">vast</span><span class="o">.</span><span class="n">whoi</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">proj</span><span class="o">/</span><span class="n">cmip6</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">cmip6</span><span class="o">-</span><span class="n">data</span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+</section>
+</section>
+<section id="cmip5">
+<h2>CMIP5<a class="headerlink" href="#cmip5" title="Link to this heading">#</a></h2>
 <p>For CMIP5 (instead of CMIP6), use the same process but replace <code class="docutils literal notranslate"><span class="pre">vast.whoi.edu/proj/cmip6</span></code> with <code class="docutils literal notranslate"><span class="pre">cmip5.whoi.edu</span></code>.</p>
-</div>
 </section>
 </section>
 
@@ -525,9 +532,13 @@ To install these packages on Debian Linux and related variants, for example, use
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-a-mac-pc">Connecting from a Mac PC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-a-windows-pc">Connecting from a Windows PC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-a-non-mac-linux-pc">Connecting from a (non-Mac) LINUX PC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6">CMIP6</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-a-mac-pc">Connecting from a Mac PC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-a-windows-pc">Connecting from a Windows PC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-a-non-mac-linux-pc">Connecting from a (non-Mac) LINUX PC</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip5">CMIP5</a></li>
 </ul>
   </nav></div>
 
