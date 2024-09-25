@@ -77,9 +77,9 @@ Now, make changes as desired on the new branch using the regular add/commit work
 ```
 Next, merge the updates to the "main" branch with:
 ```
-git checkout main
-git merge add_fruits
-git branch -d add_fruits
+> git checkout main
+> git merge add_fruits
+> git branch -d add_fruits
 ```
 Note the last line deletes the "add_fruits" branch (after we merged it to main).
 
