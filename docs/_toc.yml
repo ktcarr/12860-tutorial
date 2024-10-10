@@ -15,6 +15,11 @@ chapters:
     title: Slides
   - file: pages/tutorial_9-19/example.md
   - file: pages/tutorial_9-19/hw1_starter.md
+- file: pages/tutorial_9-19/overview
+  sections:
+  - url: https://docs.google.com/presentation/d/18Rp-7hCtp8fYvdGVZOlwaS4b_-PtmIVTkmM529wNN1Q/edit?usp=sharing 
+    title: Slides
+  - file: pages/tutorial_10-10/ENSO_example
 - file: pages/assignments/assignments_toc
   sections:
   - file: pages/assignments/assignment1
