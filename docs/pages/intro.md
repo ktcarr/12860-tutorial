@@ -13,7 +13,7 @@ Date | Topic | Link
 Due date (tentative) | Topic | Link 
 -- | -- | --
 9/30/24 | #1 Load and plot data from the CMIP server | [Assignment 1](assignments/assignment1.md)
-10/31/24 | #3 Climate mode analysis | [Assignment 3](https://canvas.mit.edu/courses/28896/files/4638875?module_item_id=1188966) (must be registered student to view)
+10/31/24 | #3 Climate mode analysis | [Assignment 3](https://canvas.mit.edu/courses/28896/files/4638875?module_item_id=1188966)
 
 ## Table of contents
 ```{tableofcontents}
