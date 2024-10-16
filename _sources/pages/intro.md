@@ -1,6 +1,6 @@
 # Introduction
 
-This page contains material for the data analysis component of the MIT/WHOI course Climate Variability and Diagnostics (12.860) for Fall 2024. The home page for the rest of the course is [https://canvas.mit.edu/courses/28896](https://canvas.mit.edu/courses/28896).
+This page contains material for the data analysis component of the MIT/WHOI course Climate Variability and Diagnostics (12.860) for Fall 2024. The home page for the rest of the course is [https://canvas.mit.edu/courses/28896](https://canvas.mit.edu/courses/28896). An outline for the tutorials and associated assignments is below. See the [Resources](resources/resources.md) page for shorter intros on other topics, including [empirical orthogonal functions (EOFs)](resources/eofs.ipynb) and [git/Github](resources/git_basics.md).
 
 ## Outline for data analysis tutorials
 Date | Topic | Link 
