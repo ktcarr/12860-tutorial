@@ -28,4 +28,5 @@ chapters:
   - file: pages/resources/FAQ
   - file: pages/resources/xarray_reference
   - file: pages/resources/git_basics
+  - file: pages/resources/eofs.ipynb
 
