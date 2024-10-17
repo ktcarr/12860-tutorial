@@ -26,4 +26,7 @@
 - Therefore, we use the observations to "pull" the model back every few hours, so that it doesn't diverge.
 - Have to make compromises: won't exactly match observations and won't conserve properties that should be conserved (unlike models)
 
-
+## To-dos
+- EOFs section: talk about North et al. (1982), "Sampling errors in the estimation of..."
+- Also see wiki page on [integral equations](https://en.wikipedia.org/wiki/Integral_equation), including specific section on integral equations as a generalization of eigenvalue equations.
+- Also: post some resources about EOFs (e.g., the ones from Caroline)
