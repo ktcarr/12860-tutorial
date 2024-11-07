@@ -1,0 +1,45 @@
+Traceback (most recent call last):
+  File "/Users/theo/research/12860_tutorial/envs/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/theo/research/12860_tutorial/envs/lib/python3.11/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/theo/research/12860_tutorial/envs/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/theo/research/12860_tutorial/envs/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/theo/research/12860_tutorial/envs/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/theo/research/12860_tutorial/envs/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/theo/research/12860_tutorial/envs/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+## open data
+cesm_hist_pre = xr.open_mfdataset(cesm_fp_pre.glob("*.nc"))
+
+## trim to area
+cesm_hist_pre = cesm_hist_pre["pr"].sel(lat=slice(-30, 30), lon=slice(100, 300))
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mOSError[0m                                   Traceback (most recent call last)
+Cell [0;32mIn[3], line 2[0m
+[1;32m      1[0m [38;5;66;03m## open data[39;00m
+[0;32m----> 2[0m cesm_hist_pre [38;5;241m=[39m [43mxr[49m[38;5;241;43m.[39;49m[43mopen_mfdataset[49m[43m([49m[43mcesm_fp_pre[49m[38;5;241;43m.[39;49m[43mglob[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43m*.nc[39;49m[38;5;124;43m"[39;49m[43m)[49m[43m)[49m
+[1;32m      4[0m [38;5;66;03m## trim to area[39;00m
+[1;32m      5[0m cesm_hist_pre [38;5;241m=[39m cesm_hist_pre[[38;5;124m"[39m[38;5;124mpr[39m[38;5;124m"[39m][38;5;241m.[39msel(lat[38;5;241m=[39m[38;5;28mslice[39m([38;5;241m-[39m[38;5;241m30[39m, [38;5;241m30[39m), lon[38;5;241m=[39m[38;5;28mslice[39m([38;5;241m100[39m, [38;5;241m300[39m))
+
+File [0;32m~/research/12860_tutorial/envs/lib/python3.11/site-packages/xarray/backends/api.py:1042[0m, in [0;36mopen_mfdataset[0;34m(paths, chunks, concat_dim, compat, preprocess, engine, data_vars, coords, combine, parallel, join, attrs_file, combine_attrs, **kwargs)[0m
+[1;32m   1039[0m paths [38;5;241m=[39m _find_absolute_paths(paths, engine[38;5;241m=[39mengine, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[1;32m   1041[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m paths:
+[0;32m-> 1042[0m     [38;5;28;01mraise[39;00m [38;5;167;01mOSError[39;00m([38;5;124m"[39m[38;5;124mno files to open[39m[38;5;124m"[39m)
+[1;32m   1044[0m [38;5;28;01mif[39;00m combine [38;5;241m==[39m [38;5;124m"[39m[38;5;124mnested[39m[38;5;124m"[39m:
+[1;32m   1045[0m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(concat_dim, ([38;5;28mstr[39m, DataArray)) [38;5;129;01mor[39;00m concat_dim [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+
+[0;31mOSError[0m: no files to open
+
