@@ -110,7 +110,16 @@ def count_extremes(AHA, cutoff_per=90.0, window=25):
     return rolling_count
 ````
 
+````{admonition} Hint: rolling counts
+:class: dropdown
+Given an xr.DataArray called ```data``` consisting of ones and zeros -- representing whether an event occurred or not -- one can get the 25-year "rolling count" along the year dimension using:
+```python
+rolling_count = data.rolling(dim={"year" : 25}, center=True).sum()
+```
+````
 
+````{admonition} My solution
+:class: dropdown
 ```python
 def count_extremes(AHA, cutoff_perc=90.0, window=25):
     """Get rolling count of Azores High extreme events.
@@ -135,7 +144,7 @@ def count_extremes(AHA, cutoff_perc=90.0, window=25):
 
     return rolling_count
 ```
-
+````
 
 ```python
 ## count extremes (from 1850-2005)
