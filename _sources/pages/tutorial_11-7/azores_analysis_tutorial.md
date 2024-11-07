@@ -83,7 +83,7 @@ def load_AHA(save_fp):
 aha = load_AHA(AHA_save_fp)
 ```
 
-### LME model validation (Fig 2c)
+## LME model validation (Fig 2c)
 Let's start by looking at the 25-year rolling count of AHA extremes. First, define a function to count the rolling count of Azores high extremes.
 
 ````{admonition} To-do: write function to count extremes
