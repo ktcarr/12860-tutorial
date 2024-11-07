@@ -84,7 +84,31 @@ aha = load_AHA(AHA_save_fp)
 ```
 
 ### LME model validation (Fig 2c)
-Metric: 25-year rolling count of AHA extremes
+Let's start by looking at the 25-year rolling count of AHA extremes. First, define a function to count the rolling count of Azores high extremes.
+
+````{admonition} To-do: write function to count extremes
+The function should take in an xr.DataArray/xr.Dataset containing the AHA index at each timestep, a cutoff percentile (used to define extremes) and a window size (in years) for the rolling count. The function should return an xr.DataArray/xr.Dataset containing the rolling count of extreme events (centered around each timestep). The function skeleton is:
+```python
+def count_extremes(AHA, cutoff_per=90.0, window=25):
+    """
+    Function to get rolling count of Azores High extreme events.
+
+    Args:
+    - AHA is xr.DataArray/xr.Dataset containing the AHA index at each time
+    - cutoff_perc is percentile value in range (0 and 100) used to define
+        'extreme' events
+    - window is an integer specifying how many years the rolling window is.
+    
+    Returns:
+    - rolling_count is xr.DataArray or xr.Dataset (type matches that of AHA)
+    """
+
+    
+    ## To-do
+    rolling_count = ...
+
+    return rolling_count
+````
 
 
 ```python
@@ -153,9 +177,11 @@ ax.set_ylabel("Count (25-yr rolling)")
 plt.show()
 ```
 
-### LME single-forcing comparison (Fig 3d,3e)
+![png](azores_analysis_files/azores_analysis_12_0.png) 
 
-#### Functions for loading paleo data and binning by century
+## LME single-forcing comparison (Fig 3d,3e)
+
+### Functions for loading paleo data and binning by century
 
 
 ```python
@@ -206,7 +232,7 @@ def bin_by_century(data, bin_offset=0):
     return data_binned
 ```
 
-#### Compute stats
+### Compute stats
 
 
 ```python
@@ -232,7 +258,7 @@ aha_mean_binned = bin_by_century(aha.mean("ensemble_member"), bin_offset=offset)
 data_binned = xr.merge([paleo_data_binned, aha_mean_binned])
 ```
 
-#### Plotting functions
+### Plotting functions
 
 
 ```python
@@ -304,7 +330,7 @@ def plot_paleo_comparison(ax, data_binned):
     return ax, ax1
 ```
 
-#### Make plot:
+### Make plot:
 
 
 ```python
@@ -326,7 +352,9 @@ ax1.set_xlim(ax0.get_xlim())
 plt.show()
 ```
 
-### Azores High distribution shift (Fig. 3b)
+![png](azores_analysis_files/azores_analysis_21_0.png)
+
+## Azores High distribution shift (Fig. 3b)
 
 Split data into pre- and post-industrial, and compute PDFs
 
@@ -343,7 +371,7 @@ pdf_hist, _ = get_empirical_pdf(aha_hist.values.flatten())
 
 
 ```python
-#### Plot result
+### Plot result
 fig, ax = plt.subplots(figsize=(4, 3))
 
 ## plot histogram
@@ -360,9 +388,12 @@ ax.set_title("PDF")
 plt.show()
 ```
 
-### PDF of extreme events (Fig. 3c)
+![png](azores_analysis_files/azores_analysis_25_0.png)
 
-#### Empirical PDFs
+
+## PDF of extreme events (Fig. 3c)
+
+### Empirical PDFs
 
 First, let's plot the PDF of extreme events for individual samples and for the ensemble mean.
 
@@ -376,7 +407,7 @@ pdf, edges = get_empirical_pdf(
 ## Get sample from last year of LME simulation for comparison
 last_sample = extreme_count_100["lme_full"].isel(year=-1)
 
-#### Plot result
+### Plot result
 fig, ax = plt.subplots(figsize=(4, 3))
 
 ## plot histogram
@@ -397,6 +428,9 @@ ax.legend()
 
 plt.show()
 ```
+
+![png](azores_analysis_files/azores_analysis_29_0.png)
+
 
 Next, do the same thing but for the ensemble mean
 
@@ -430,10 +464,37 @@ ax.legend()
 plt.show()
 ```
 
+![png](azores_analysis_files/azores_analysis_31_0.png)
+
+
 #### Monte-Carlo PDF
 
 Next, let's use a Monte-Carlo approach to check the statistical signficance of the increase in extreme events. Below, draw random samples.
 
+````{admonition} To-do: recreate Fig 3c
+Create a Monte-Carlo PDF for the number of extreme events per 100-years, for the ensemble mean. To do this: draw $10^5$ random 100-year samples (with replacement) from each ensemble member in the "Full" forcing ensemble, count the number of extremes in each 100-yr sample, then average across the ensemble members (resulting in $10^5$ random samples of the ensemble-mean extreme count). Call the resulting array ```rand_samples_ens_mean``` if you'd like to plug it into the plotting code which follows.
+````
+
+````{admonition} Hint: drawing samples
+:class: tip
+:class: dropdown
+We've actually already counted the number of extreme events in 100 year samples; this variable is called ```extreme_count_100```. Therefore, instead of drawing 100-yr segments, we can just draw single timesteps from ```extreme_count_100```, which represents a 100-yr rolling mean.  
+
+To create an array of $n$ random integers in the range $[0,m]$, you can use:
+```python
+rng = np.random.default_rng()
+rand_ints = rng.choice(m, size=n, replace=True)
+```
+
+Then to draw $10^5$ samples from the $i^{th}$ ensemble member, you can use:
+```python
+rand_idx = rng.choice(len(extreme_count_100.year), size=int(1e5))
+rand_samples_i = extreme_count_100["lme_full"].sel(ensemble_member=i).values[rand_idx]
+```
+````
+
+````{admonition} My solution 
+:class: dropdown
 
 ```python
 ## number of random samples to draw
@@ -458,6 +519,9 @@ rand_samples = np.take_along_axis(
 ## Take "ensemble sum" of random samples
 rand_samples_ens_mean = rand_samples.mean(0)
 ```
+
+````
+
 
 Next, plot the Monte-Carlo PDF and the ensemble mean from the last sample.
 
@@ -495,3 +559,6 @@ ax.legend(prop=dict(size=8))
 
 plt.show()
 ```
+
+![png](azores_analysis_files/azores_analysis_36_0.png)
+
